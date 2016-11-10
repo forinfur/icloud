@@ -1,0 +1,28 @@
+body,ul,li,a,img{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    border: 0;
+}
+.box{
+    width: 400px;
+    height: 200px;
+    background: #2d2d2b;
+    box-shadow: 0 0 15px #333;
+    margin: 10px auto;
+}
+.imgs{
+    width: 200px;
+    height:190px;
+    background: #1C383F;
+    margin: 5px;
+    float: left;
+}
+img{
+    width: 200px;
+    height:190px;
+}
+ul{
+    float: right;
+    width: 190px;
+}

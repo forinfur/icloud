@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"  ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>icloud</title>
+    <script src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <script src="js/index.js"></script>
+</head>
+<body ng-controller="form">
+        <div class="left_item mCustomScrollbar">
+            <div class="title_l">
+                <p>iCloud</p><span ng-click="additem()">┼</span>
+            </div>
+            <ul >
+                <li ng-repeat="v in todo " ng-class="$index==index?'bg':''" ng-click="addbgcol($index)"><span ng-style="{background:v.color}"></span><p>{{v.title}}</p></li>
+            </ul>
+        </div>
+        <div class="right_item mCustomScrollbar">
+            <div class="search_r">
+                <div></div>
+                <input type="text" placeholder="搜索所有提示">
+            </div>
+            <div class="right"></div>
+            <div class="title_r">
+
+                <h2 class="tit_r" ng-style="{color:todo[index].color}">{{todo[index].title}}<span class="opation" ng-click="sg_flag=!sg_flag" >选项</span>                
+                <div class="tips" ng-if="sg_flag">
+                    <div class="tipsinn">
+                    <input type="text" ng-value="inpval" ng-style="{color:inpcol}">
+                    <h5>列表颜色</h5>
+                    <ul >
+                        <li ng-repeat="u in color" ng-style='{backgroundColor:u,borderColor:inpcol==u?u:""}' ng-click="changecol(u)"></li>
+                    </ul>
+                 
+                    <div class="button">
+                        <span class="del" ng-click="delitem()">删除</span>
+                        <div class="btn_qxorwc"><span ng-click="disload()">取消</span><span>|</span><span>完成</span></div>
+                        <div class="r_sanjiao"></div>
+                    </div>
+                    </div>
+                </div></h2>
+                <div  ng-click="flag=!flag" ng-class="{true:'sanjiao2',false:'sanjiao'}[flag]"></div>
+                <p class="wancheng">已完成：<span>{{num}}</span>件<span class='clear' ng-style="{color:todo[index].color}" ng-click="allclear()">清除已完成</span></p>
+                <div class="content_r" >
+                    <ul ng-if="flag">
+                        <li ng-repeat="u in todo[index].list | filter:'true'">
+                            <div class="yuan" ng-click="set(u,false)" ng-style='{backgroundColor:todo[index].color,borderColor:todo[index].color}'></div><div class="done">{{u.title}}</div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li ng-repeat="u in todo[index].list | filter:'false'">
+                            <div class="yuan" ng-style='{borderColor:todo[index].color}' ng-click="set(u,true)"></div><div class="do" contenteditable  ng-blur="change(u,$event)">{{u.title}}</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="new " ng-click="addlist()">新项目...</div>
+            </div>
+
+        </div>
+
+</body>
+<script src="js/minified/jquery-2.1.0.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+</html>

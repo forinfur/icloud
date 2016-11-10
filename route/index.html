@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.min.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+
+    header{
+        background: #007aff;
+        color: #cfcfcf;
+        height:50px;;
+    }
+    nav{
+        height: 80px;;
+        background:#555555;
+        color: snow;
+    }
+    nav li{
+        float:left;
+        padding: 0 18px;
+    }
+
+</style>
+<body>
+<!--列表+详情+添加+修改  页面-->
+<header>路由测试</header>
+<content ng-controller="c">
+    <nav>
+        <ul>
+            <li><a href="#/add">添加</a></li>
+            <li><a href="#/">主页</a></li>
+        </ul>
+    </nav>
+    <div ng-view></div>
+</content>
+<footer>
+
+</footer>
+</body>
+</html>
+<script>
+    var aa=[
+        {
+            id:1,
+            title:'中文名字叫做可扩展超文本传输请求',
+            context:'务器请求数据，服务器端接受数据并处理后，向客户端反馈数据。 XMLHtt' +
+            'pRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的' +
+            ' GET 请求的能力。XMLHttpRequest 可以同步或异步返回 Web 服务器的响应，并且能以文本或者' +
+            '一个 DOM 文档形式返回内容。尽管名为 XMLHttpRequest，它并不限于和' +
+            ' XML 文档一起使用：它可以接收任何形式的文本文'
+        },
+        {
+            id:2,
+            title:'以同步或异步返回 Web 服务器的响应，并且能以文本或',
+            context:'器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不' +
+            '重新加载整个网页的情况下，对网页的某部分进行更新。从今天开始nie，小编开始和' +
+            '小伙伴们一起学习ajax的相关知识，这篇博文，小编主要简单的和大家介绍介绍XMLHttpRe' +
+            'quset对象的使用，首先我们来看一下这个对象的属性还有'
+        },
+        {
+            id:3,
+            title:'共享之行为或有侵犯知乎权益的嫌疑',
+            context:'有 API 均由 知乎（Zhihu.Inc） 提供，本人采取非正' +
+            '常手段获取。获取与共享之行为或有侵犯知乎权益的嫌疑。若被告知需停止' +
+            '共享与使用，本人会及时删除此页面与整个项'
+        }
+    ]
+    var aaa= angular.module('app', ['ngRoute'])
+            .config(function($routeProvider) {
+                $routeProvider
+                        .when('/',{
+                            templateUrl:'temp/index.html',
+                            controller: 'c'
+                        })
+                        .when('/:id',{
+                            templateUrl:'temp/golist.html',
+                            controller: 'c'
+                        })
+                        .when('/add/',{
+                            templateUrl:'temp/add.html',
+                            controller: 'c'
+                        })
+            })
+
+        aaa.controller('c',function($scope,$routeParams){
+            $scope.nowid=$routeParams.id;
+            $scope.aa=aa;
+            $scope.cont=null;
+            $scope.txt="";
+            $scope.neirong="";
+            angular.forEach(aa,function(v,i){
+                if(v.id==$scope.nowid){
+                    $scope.cont=v;
+                }
+            })
+            angular.adds=function(){
+               $scope.adds={
+                    id:$scope.aa.length,
+                    title:$scope.txt,
+                    context:$scope.neirong
+                }
+                $scope.aa.push($scope.adds)
+                $scope.txt="";
+                $scope.neirong="";
+            }
+            })
+
+
+
+
+
+</script>

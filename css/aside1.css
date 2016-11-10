@@ -1,0 +1,36 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+.box{
+    width: 360px;
+    height: auto;
+    border: 1px solid #ccc;
+    margin: 20px;
+    border-radius: 10px 10px 0 0;
+    float: left;
+}
+.title{
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+    line-height: 40px;
+}
+.title h3{
+    float: left;
+    font-weight: normal;
+    margin-left: 10px;
+}
+.title a{
+    float:right;
+    margin-right: 10px;
+    color: #ff2a6b;
+}
+.content{
+    padding: 10px;
+}
+.content li{
+    line-height: 40px;
+}
